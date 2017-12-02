@@ -3,8 +3,15 @@ services:
   web:
     build: .
     ports:
-    - "3000:3000"
+    - "3005:3005"
+  api:
+    build: api/.
+    ports:
+    - "9080:9080"
+    links:
+    - mysql:mysql
   mysql:
+    image: mysql
     build: database/.
     restart: always
     ports:
