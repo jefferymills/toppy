@@ -10,20 +10,26 @@ const Battle = sequelize.define('Battles', {
         autoIncrement: true,
     },
     userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
     },
     winnerId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
     },
     loserId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
     },
     warId: {
-        type: Sequelize.INTEGER
-    }
+        type: Sequelize.INTEGER,
+    },
+    contestantA: {
+        type: Sequelize.INTEGER,
+    },
+    contestantB: {
+        type: Sequelize.INTEGER,
+    },
 });
 
-//Battle.belongsTo(War);
-//Battle.belongsTo(User);
+Battle.belongsTo(War);
+Battle.belongsTo(User);
 
 module.exports = Battle;

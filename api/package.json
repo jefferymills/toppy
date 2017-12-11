@@ -9,7 +9,7 @@
     "sequelize": "^4.23.4"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon -L index.js",
     "flow": "flow"
   }
 }

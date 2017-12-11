@@ -4,7 +4,7 @@ const app = express();
 
 app.use(bodyParser.json({ type: 'application/json' }));
 
-app.use('/api/battle', require('./routes/battle'));
+app.use('/api/wars', require('./routes/wars'));
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

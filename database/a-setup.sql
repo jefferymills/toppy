@@ -30,6 +30,8 @@ CREATE TABLE `Battles` (
   `warId` int(11) NOT NULL,
   `contestantA` int(11) NOT NULL,
   `contestantB` int(11) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -94,4 +96,4 @@ CREATE TABLE `Wars` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-01 23:04:25
+-- Dump completed on 2017-12-02 22:45:16

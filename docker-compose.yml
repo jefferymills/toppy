@@ -10,6 +10,8 @@ services:
     - "9080:9080"
     links:
     - mysql:mysql
+    volumes:
+    - /Users/jeffmills/Sites/mine/toppy/api:/Users/jeffmills/Sites/mine/toppy/api
   mysql:
     image: mysql
     build: database/.
