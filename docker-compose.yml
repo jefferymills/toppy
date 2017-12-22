@@ -2,9 +2,14 @@ version: '3'
 services:
   web:
     build: .
+    links:
+    - api:api
+    volumes:
+    - /Users/jeffmills/Sites/mine/toppy:/Users/jeffmills/Sites/mine/toppy
     ports:
     - "3005:3005"
   api:
+    image: api
     build: api/.
     ports:
     - "9080:9080"

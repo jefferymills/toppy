@@ -4,10 +4,10 @@ const Battle = require('../models/Battle');
 class WarService {
     getNewBattle(userId, warId) {
         return sequelize.query(`select
-            a.name as name_a,
-            b.name as name_b,
-            a.id as id_a,
-            b.id as id_b
+            a.name as contestantA,
+            b.name as contestantB,
+            a.id as idA,
+            b.id as idB
             from Contestants a
             inner join Contestants b on a.id < b.id
             where a.warId = ${warId}
@@ -20,9 +20,20 @@ class WarService {
                     and c.warId = ${warId}
                     and userId = ${userId}) 
             order by a.id * rand()
-            limit 1`
+            limit 1`,
+            { type: sequelize.QueryTypes.SELECT }
         )
-        .then(results => results[0]);
+        .then(results => {
+            const result = results[0];
+            if (!result) return null;
+            return [{
+                id: result.idA,
+                name: result.contestantA,
+            }, {
+                id: result.idB,
+                name: result.contestantB,
+            }];
+        });
     }
 
     async getOldBattle(userId, warId, winnerId, loserId) {
@@ -83,7 +94,6 @@ class WarService {
                             contestantA: Math.min(loserWin.loserId, winnerId),
                             contestantB: Math.max(loserWin.loserId, winnerId)
                         }).then(() => {
-                            console.log('declareTransitiveLosses', winnerId, loserWin.loserId);
                             this._declareTransitiveLosses(userId, warId, winnerId, loserWin.loserId);
                         })
                     })
