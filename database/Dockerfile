@@ -7,4 +7,3 @@ ENV MYSQL_PASSWORD toppy123
 
 ADD a-setup.sql /docker-entrypoint-initdb.d
 ADD b-setup-christmas-song-seed.sql /docker-entrypoint-initdb.d
-ADD c-setup-battles-seed.sql /docker-entrypoint-initdb.d

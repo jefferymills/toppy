@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './Home';
-import Battle from './features/Battle';
+import Battle from './features/Battle/index';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';

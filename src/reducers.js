@@ -1,4 +1,4 @@
-import BattleReducers from './features/Battle/reducers';
+import BattleReducers from './features/Battle/reducers/index';
 
 export default {
   battle: BattleReducers
