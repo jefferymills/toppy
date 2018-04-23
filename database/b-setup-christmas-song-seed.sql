@@ -40,8 +40,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'Jeff','Mills','breathmills@gmail.com');
-INSERT INTO `Users` VALUES (2,'Andrea','Mills','andrea.h.mills@gmail.com');
+INSERT INTO `Users` VALUES (1,'Jeff','Mills','breathmills@gmail.com', 'aduckatemyface', NOW(), NOW());
+INSERT INTO `Users` VALUES (2,'Andrea','Mills','andrea.h.mills@gmail.com', 'adingoatemybaby', NOW(), NOW());
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 

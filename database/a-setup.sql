@@ -66,6 +66,9 @@ CREATE TABLE `Users` (
   `firstName` varchar(254) DEFAULT NULL,
   `lastName` varchar(254) DEFAULT NULL,
   `email` varchar(320) DEFAULT NULL,
+  `password` varchar(40) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;

@@ -5,7 +5,7 @@ import './Home.css';
 
 const App = () => (
   <div>
-    <Link to="/battle">Battle</Link>
+    <Link to="/login">Login</Link>
   </div>
 );
 
