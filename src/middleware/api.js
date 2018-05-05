@@ -1,5 +1,4 @@
-const headers = new Headers();
-headers.append('Content-Type', 'application/json');
+import { authHeader } from '../utils';
 
 export default store => next => action => {
   const { types = [], url, method, body } = action;
@@ -10,6 +9,8 @@ export default store => next => action => {
   }
 
   next({ type: requestType });
+  const headers = new Headers(authHeader());
+  headers.append('Content-Type', 'application/json');
 
   const fetchInit = {
     method,
