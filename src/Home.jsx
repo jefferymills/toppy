@@ -5,7 +5,8 @@ import './Home.css';
 
 const App = () => (
   <div>
-    <Link to="/login">Login</Link>
+    {!localStorage.getItem('user') && <Link to="/login">Login</Link>}
+    {localStorage.getItem('user') && <Link to="/battle">Battle</Link>}
   </div>
 );
 
