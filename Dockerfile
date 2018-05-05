@@ -3,5 +3,5 @@ WORKDIR /Users/jeffmills/Sites/mine/toppy
 ADD . /Users/jeffmills/Sites/mine/toppy
 COPY package.json .
 RUN yarn install
-EXPOSE 3005
+EXPOSE 3006
 CMD ["yarn", "start"]

@@ -7,7 +7,7 @@ services:
     volumes:
     - /Users/jeffmills/Sites/mine/toppy:/Users/jeffmills/Sites/mine/toppy
     ports:
-    - "3005:3005"
+    - "3006:3006"
   api:
     image: api
     build: api/.
