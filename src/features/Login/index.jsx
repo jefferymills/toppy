@@ -25,7 +25,7 @@ class Login extends PureComponent {
   };
   render() {
     return (
-      <div>
+      <form onSubmit={this.handleLoginClick}>
         <div>
           <label htmlFor="email">Email</label>
           <input type="email" name="email" ref="email" />
@@ -34,8 +34,8 @@ class Login extends PureComponent {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" ref="password" />
         </div>
-        <button onClick={this.handleLoginClick}>Login</button>
-      </div>
+        <input type="submit" value="Login" />
+      </form>
     );
   }
 }
