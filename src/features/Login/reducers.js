@@ -13,10 +13,16 @@ function loginFailure(state) {
 }
 
 function loginSuccess(state, { response }) {
-  const { token } = response;
-  localStorage.setItem('user', token);
+  const { token, success, message } = response;
+  if (success) {
+    localStorage.setItem('user', token);
+    return assignAll([state, { loginRequested: false }]);
+  }
 
-  return assignAll([state, { loginRequested: false }]);
+  return assignAll([
+    state,
+    { loginRequested: false, loginRequestError: message }
+  ]);
 }
 
 export default function loginReducer(state = {}, action) {

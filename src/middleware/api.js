@@ -21,8 +21,20 @@ export default store => next => action => {
 
   return fetch(`http://localhost:9080/api/${url}`, fetchInit)
     .then(
-      response => response.json(),
+      response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject({
+            status: response.status,
+            statusText: response.statusText
+          });
+        }
+      },
       error => next({ error, type: failureType })
     )
-    .then(response => next({ response, type: successType }));
+    .then(response => next({ response, type: successType }))
+    .catch(error => {
+      next({ error, type: failureType });
+    });
 };

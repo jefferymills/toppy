@@ -11,7 +11,7 @@ module.exports = (req, res) => {
         res.json({ success: false, message: 'Authentication failed. User not found.' });
       } else {
         if (user.password === password) {
-          const payload = { id: user.id };
+          const payload = { userId: user.id };
           const token = jwt.sign(payload, app.get('superSecret'), {
             expiresIn: 60 * 60 * 24,
           });
