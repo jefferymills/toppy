@@ -28,10 +28,9 @@ function isAuthenticated(req, res, next) {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     // Handle token presented as a Bearer token in the Authorization header
     const token = req.headers.authorization.split(' ')[1];
-    console.log(token);
+
     try {
       const payload = jwt.verify(token, app.get('superSecret'));
-      console.log(payload);
       req.userId = payload.userId;
       return next();
     } catch(err) {
@@ -44,6 +43,7 @@ function isAuthenticated(req, res, next) {
 
 app.use('/api/wars', isAuthenticated, require('./routes/wars'));
 app.post('/api/authenticate', require('./routes/authenticate'));
+app.post('/api/signup', require('./routes/signup'));
 
 app.listen(9080, () => console.log('Example app listening on port 9080!'));
 module.exports = app;

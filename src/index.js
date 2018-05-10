@@ -15,6 +15,7 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import './index.css';
 import Home from './Home';
 import Login from './features/Login';
+import Signup from './features/Signup';
 import Battle from './features/Battle/index';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -38,6 +39,7 @@ const AppContainer = () => (
   <ConnectedSwitch>
     <Route exact path="/" component={Home} />
     <Route path="/login" component={Login} />
+    <Route path="/signup" component={Signup} />
     <ProtectedRoute path="/battle" component={Battle} />
   </ConnectedSwitch>
 );

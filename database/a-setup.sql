@@ -66,7 +66,7 @@ CREATE TABLE `Users` (
   `firstName` varchar(254) DEFAULT NULL,
   `lastName` varchar(254) DEFAULT NULL,
   `email` varchar(320) DEFAULT NULL,
-  `password` varchar(40) DEFAULT NULL,
+  `password` varchar(70) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
