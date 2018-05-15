@@ -21,6 +21,9 @@ const User = sequelize.define('Users', {
   password: {
     type: Sequelize.STRING,
   },
+  confirmed: {
+    type: Sequelize.BOOLEAN,
+  },
 });
 
 //User.hasMany(Battle);

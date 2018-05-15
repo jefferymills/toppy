@@ -8,5 +8,5 @@ const loginRequest = (email, password) => ({
   body: { email, password }
 });
 
-export const login = (email, password) => dispatch =>
+export const requestLogin = (email, password) => dispatch =>
   dispatch(loginRequest(email, password));

@@ -14,7 +14,7 @@ const signupRequest = ({
   body: { email, password, passwordConfirm, firstName, lastName }
 });
 
-export const signup = ({
+export const requestSignup = ({
   email,
   password,
   passwordConfirm,

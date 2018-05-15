@@ -16,7 +16,8 @@ import './index.css';
 import Home from './Home';
 import Login from './features/Login';
 import Signup from './features/Signup';
-import Battle from './features/Battle/index';
+import Battle from './features/Battle';
+import Confirmation from './features/Confirmation';
 import registerServiceWorker from './registerServiceWorker';
 
 import reducers from './reducers';
@@ -40,6 +41,7 @@ const AppContainer = () => (
     <Route exact path="/" component={Home} />
     <Route path="/login" component={Login} />
     <Route path="/signup" component={Signup} />
+    <Route path="/confirmation/:token" component={Confirmation} />
     <ProtectedRoute path="/battle" component={Battle} />
   </ConnectedSwitch>
 );

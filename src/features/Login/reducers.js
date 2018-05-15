@@ -1,6 +1,12 @@
 import assignAll from 'lodash/fp/assignAll';
 import * as ActionTypes from './actions';
 
+const defaultState = {
+  loginRequested: false,
+  loginRequestError: null,
+  loginRequestSuccess: false
+};
+
 function login(state) {
   return assignAll([state, { loginRequested: true }]);
 }
@@ -16,7 +22,10 @@ function loginSuccess(state, { response }) {
   const { token, success, message } = response;
   if (success) {
     localStorage.setItem('user', token);
-    return assignAll([state, { loginRequested: false }]);
+    return assignAll([
+      state,
+      { loginRequested: false, loginRequestSuccess: true }
+    ]);
   }
 
   return assignAll([
@@ -25,7 +34,7 @@ function loginSuccess(state, { response }) {
   ]);
 }
 
-export default function loginReducer(state = {}, action) {
+export default function loginReducer(state = defaultState, action) {
   switch (action.type) {
     case ActionTypes.LOGIN:
       return login(state);

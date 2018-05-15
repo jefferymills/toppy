@@ -1,6 +1,12 @@
 import assignAll from 'lodash/fp/assignAll';
 import * as ActionTypes from './actions';
 
+const initialState = {
+  signupRequested: false,
+  signupRequestError: null,
+  signupRequestSuccess: false
+};
+
 function signup(state) {
   return assignAll([state, { signupRequested: true }]);
 }
@@ -13,10 +19,12 @@ function signupFailure(state) {
 }
 
 function signupSuccess(state, { response }) {
-  const { token, success, message } = response;
+  const { success, message } = response;
   if (success) {
-    localStorage.setItem('user', token);
-    return assignAll([state, { signupRequested: false }]);
+    return assignAll([
+      state,
+      { signupRequested: false, signupRequestSuccess: true }
+    ]);
   }
 
   return assignAll([
@@ -25,13 +33,13 @@ function signupSuccess(state, { response }) {
   ]);
 }
 
-export default function signupReducer(state = {}, action) {
+export default function signupReducer(state = initialState, action) {
   switch (action.type) {
-    case ActionTypes.LOGIN:
+    case ActionTypes.SIGNUP:
       return signup(state);
-    case ActionTypes.LOGIN_FAILURE:
+    case ActionTypes.SIGNUP_FAILURE:
       return signupFailure(state);
-    case ActionTypes.LOGIN_SUCCESS:
+    case ActionTypes.SIGNUP_SUCCESS:
       return signupSuccess(state, action);
     default:
       return state;

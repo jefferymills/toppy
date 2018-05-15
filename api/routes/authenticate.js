@@ -9,6 +9,8 @@ module.exports = async (req, res) => {
   const user = await User.findOne({ where: { email } });
   if (!user) {
     res.json({ success: false, message: 'Authentication failed. User not found.' });
+  } else if (!user.confirmed) {
+    res.json({ success: false, message: 'User email not confirmed'});
   } else {
     const passwordMatch = await bcrypt.compare(password, user.password);
 

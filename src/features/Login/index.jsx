@@ -1,10 +1,11 @@
 // @flow
 import React, { PureComponent } from 'react';
-//import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { login } from './actions';
 import { withRouter } from 'react-router-dom';
 import getOr from 'lodash/fp/getOr';
+
+import { requestLogin } from './actions';
 
 const referrerRedirect = props => {
   const referrer = getOr('/', 'location.state.from.pathname', props);
@@ -21,9 +22,10 @@ class Login extends PureComponent {
   handleLoginClick = e => {
     e.preventDefault();
     const { email, password } = this.refs;
-    this.props.login(email.value, password.value);
+    this.props.requestLogin(email.value, password.value);
   };
   render() {
+    console.log(this.props);
     return (
       <form onSubmit={this.handleLoginClick}>
         <div>
@@ -40,8 +42,8 @@ class Login extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({ ...state.login });
+const mapStateToProps = state => ({ login: state.login });
 
 export default connect(mapStateToProps, {
-  login
+  requestLogin
 })(withRouter(Login));
