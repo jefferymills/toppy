@@ -47,19 +47,38 @@ class SignupForm extends PureComponent {
       <form onSubmit={this.handleSignUpClick}>
         <div>
           <label htmlFor="firstName">First name</label>
-          <input type="text" name="firstName" value={firstName} {...onChange} />
+          <input
+            required
+            type="text"
+            name="firstName"
+            value={firstName}
+            {...onChange}
+          />
         </div>
         <div>
           <label htmlFor="lastName">Last name</label>
-          <input type="text" name="lastName" value={lastName} {...onChange} />
+          <input
+            required
+            type="text"
+            name="lastName"
+            value={lastName}
+            {...onChange}
+          />
         </div>
         <div>
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" value={email} {...onChange} />
+          <input
+            required
+            type="email"
+            name="email"
+            value={email}
+            {...onChange}
+          />
         </div>
         <div>
           <label htmlFor="password">Password</label>
           <input
+            required
             type="password"
             name="password"
             value={password}
@@ -69,6 +88,7 @@ class SignupForm extends PureComponent {
         <div>
           <label htmlFor="password-repeat">Confirm Password</label>
           <input
+            required
             type="password"
             name="passwordConfirm"
             value={passwordConfirm}

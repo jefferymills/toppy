@@ -25,7 +25,6 @@ class Login extends PureComponent {
     this.props.requestLogin(email.value, password.value);
   };
   render() {
-    console.log(this.props);
     return (
       <form onSubmit={this.handleLoginClick}>
         <div>

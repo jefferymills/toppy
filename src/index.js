@@ -14,10 +14,9 @@ import { withRouter } from 'react-router-dom';
 import ProtectedRoute from './utils/ProtectedRoute';
 import './index.css';
 import Home from './Home';
-import Login from './features/Login';
-import Signup from './features/Signup';
+import { Signup, Confirmation, Login } from './features/Authentication';
+
 import Battle from './features/Battle';
-import Confirmation from './features/Confirmation';
 import registerServiceWorker from './registerServiceWorker';
 
 import reducers from './reducers';

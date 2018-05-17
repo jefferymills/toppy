@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import BattleList from './components/BattleList';
 import {
   fetchBattle,
   declareBattle,
@@ -9,9 +10,9 @@ import {
 
 class Battle extends PureComponent {
   static propTypes = {
-    fetchBattle: PropTypes.func,
-    declareBattle: PropTypes.func,
-    fetchUserBattleList: PropTypes.func,
+    fetchBattle: PropTypes.func.isRequired,
+    declareBattle: PropTypes.func.isRequired,
+    fetchUserBattleList: PropTypes.func.isRequired,
     battle: PropTypes.shape({
       currentBattle: PropTypes.array
     }).isRequired
@@ -37,13 +38,16 @@ class Battle extends PureComponent {
       .then(() => fetchUserBattleList(1));
   }
   render() {
-    const { battle: { currentBattle, userBattleList } } = this.props;
-    if (!currentBattle)
+    const {
+      battle: { currentBattle, userBattleList }
+    } = this.props;
+    if (!currentBattle) {
       return (
         <div>
           <BattleList list={userBattleList} />
         </div>
       );
+    }
     return (
       <div>
         <Contestant
@@ -72,33 +76,6 @@ const Contestant = ({ name, index, oppIndex, onClick }) => {
     </div>
   );
 };
-
-class BattleList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.renderListItems = this.renderListItems.bind(this);
-  }
-
-  renderListItems() {
-    const { list = [] } = this.props;
-    return list.map(item => (
-      <tr key={item.id}>
-        <td>{item.name}</td>
-        <td>{item.wins}</td>
-        <td>{item.losses}</td>
-        <td>{(item.wins / (item.wins + item.losses) || 0).toFixed(2)}</td>
-      </tr>
-    ));
-  }
-
-  render() {
-    return (
-      <table>
-        <tbody>{this.renderListItems()}</tbody>
-      </table>
-    );
-  }
-}
 
 const mapStateToProps = state => ({
   battle: state.battle

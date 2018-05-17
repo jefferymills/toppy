@@ -1,10 +1,15 @@
 import React, { PureComponent } from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchConfirmation } from './actions';
 
 class Confirmation extends PureComponent {
+  static propTypes = {
+    match: ReactRouterPropTypes.match.isRequired,
+    fetchConfirmation: PropTypes.func.isRequired
+  };
   constructor(props) {
     super(props);
     const { match } = props;

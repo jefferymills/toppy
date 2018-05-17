@@ -17,7 +17,6 @@ class SignUp extends PureComponent {
   };
 
   render() {
-    console.log(this.props);
     const content = this.props.signupRequestSuccess ? (
       <div>
         <h1>Confirmation Email Sent.</h1>
